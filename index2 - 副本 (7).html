@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script type="text/javascript" src="js/zepto.min.js" ></script>
+		<link rel="stylesheet" type="text/css" href="css/swiper.min.css"/>
+		<script type="text/javascript" src="js/swiper.min.js" ></script>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			.nav ul{
+				display: flex;
+				justify-content: space-between;
+			}
+			.nav li{
+				width: 33%;
+				border: 1px solid red;
+				text-align: center;
+				height: 50px;
+				line-height: 50px;
+			}
+			.bor{
+				background: palevioletred;
+				color: white;
+				font-size: 20px;
+			}
+			.swiper-container li{
+				height: 400px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="nav">
+			<ul>
+				<li class="bor">大帅比</li>
+				<li>小可爱</li>
+				<li>小正太</li>
+			</ul>
+		</div>
+		<div class="swiper-container">
+			<ul class="swiper-wrapper">
+				<li class="swiper-slide" style="background: deeppink;"></li>
+				<li class="swiper-slide" style="background: deepskyblue;"></li>
+				<li class="swiper-slide" style="background: mediumspringgreen;"></li>
+			</ul>
+		</div>
+		<script>
+			$(".nav li").click(function(){
+				var index=$(this).index();
+				$(".nav li").eq(index).addClass("bor").siblings().removeClass("bor")
+				sw.slideTo(index)
+			})
+			var sw=new Swiper(".swiper-container",{
+				onSlideChangeStart:function(){
+					var index=sw.activeIndex;
+				$(".nav li").eq(index).addClass("bor").siblings().removeClass("bor")	
+				}
+			})
+		</script>
+	</body>
+</html>
